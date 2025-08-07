@@ -1,4 +1,9 @@
 /* Global styles for minimalistic design */
+:root {
+  --primary: #1976d2;
+  --secondary: #424242;
+  --accent: #ffca28;
+}
 * {
   margin: 0;
   padding: 0;
