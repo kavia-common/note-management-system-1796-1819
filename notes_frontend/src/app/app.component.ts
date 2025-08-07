@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
+
 import { Note } from './models/note.model';
 import { NotesService } from './services/notes.service';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
@@ -14,7 +14,6 @@ import { NoteEditorComponent } from './components/note-editor/note-editor.compon
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, NotesListComponent, NoteEditorComponent],
-  providers: [provideHttpClient()],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -27,7 +26,10 @@ export class AppComponent {
   isEditing: boolean = false;
   isCreating: boolean = false;
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService) {
+    // Explicit reference to avoid unused warning
+    void notesService;
+  }
 
   ngOnInit() {
     this.loadNotes();

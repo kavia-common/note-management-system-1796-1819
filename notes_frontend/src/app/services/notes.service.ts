@@ -12,7 +12,10 @@ import { environment } from '../../environments/environment';
 export class NotesService {
   private apiUrl: string = environment.apiUrl;
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    // Explicit reference to avoid unused warning
+    void http;
+  }
 
 
   // PUBLIC_INTERFACE
