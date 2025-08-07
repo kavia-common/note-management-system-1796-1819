@@ -1,0 +1,24 @@
+<div class="editor-container" *ngIf="editable || note">
+  <form *ngIf="editable" [formGroup]="noteForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <input class="title-input" placeholder="Title"
+           formControlName="title" maxlength="100" />
+    <textarea class="content-input"
+              placeholder="Write your note..."
+              rows="16"
+              formControlName="content"></textarea>
+    <div class="editor-actions">
+      <button type="submit" class="save-btn" [disabled]="!noteForm.valid">Save</button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+  <ng-container *ngIf="!editable && note">
+    <div class="note-meta">
+      <h2 class="note-title">{{ note.title || 'Untitled' }}</h2>
+      <div class="note-dates">Updated: {{ note.updatedAt | date:'short' }}</div>
+    </div>
+    <div class="note-content" [innerText]="note.content"></div>
+  </ng-container>
+</div>
+<div class="placeholder" *ngIf="!note && !editable">
+  <span>Select a note to view, or create a new note.</span>
+</div>

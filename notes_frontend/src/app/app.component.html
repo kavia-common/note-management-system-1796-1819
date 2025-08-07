@@ -1,0 +1,44 @@
+<div class="app-wrapper">
+  <div class="sidebar">
+    <app-notes-list
+      [notes]="notes"
+      [selectedNoteId]="selectedNoteId"
+      (noteSelect)="onSelectNote($event)"
+      (noteDelete)="onDeleteNote($event)"
+      (createNew)="onCreateNewNote()"
+    ></app-notes-list>
+  </div>
+  <div class="main-panel">
+    <div class="main-panel-bar" *ngIf="selectedNote && !isEditing && !isCreating">
+      <button class="edit-btn" (click)="onEditNote()">Edit</button>
+    </div>
+    <app-note-editor
+      *ngIf="isCreating"
+      [editable]="true"
+      [isCreating]="true"
+      (save)="onSaveNewNote($event)"
+      (cancel)="onCancelEditOrCreate()"
+    ></app-note-editor>
+    <app-note-editor
+      *ngIf="selectedNote && isEditing"
+      [note]="selectedNote"
+      [editable]="true"
+      (save)="onSaveEditedNote($event)"
+      (cancel)="onCancelEditOrCreate()"
+    ></app-note-editor>
+    <app-note-editor
+      *ngIf="selectedNote && !isEditing && !isCreating"
+      [note]="selectedNote"
+      [editable]="false"
+    ></app-note-editor>
+    <div *ngIf="!selectedNote && !isCreating" class="main-placeholder">
+      <span>Select a note or create a new one to begin.</span>
+    </div>
+    <div *ngIf="loading" class="loading-indicator">
+      Loading...
+    </div>
+    <div *ngIf="error" class="error-indicator">
+      {{ error }}
+    </div>
+  </div>
+</div>

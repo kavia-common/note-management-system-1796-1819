@@ -1,0 +1,12 @@
+<div class="sidebar-header">
+  <span class="sidebar-title">Notes</span>
+  <button class="new-note-btn" (click)="onCreateNew()" title="Create New Note">+</button>
+</div>
+<ul class="notes-list">
+  <li *ngFor="let note of notes"
+      [class.selected]="note.id === selectedNoteId"
+      (click)="onSelect(note)">
+    <span class="note-title">{{ note.title || 'Untitled' }}</span>
+    <button class="delete-btn" (click)="onDelete(note, $event)" title="Delete">&#128465;</button>
+  </li>
+</ul>

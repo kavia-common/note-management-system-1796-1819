@@ -1,0 +1,105 @@
+.editor-container {
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  min-height: 100vh;
+  background: #fafcff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.title-input {
+  border: none;
+  border-bottom: 2px solid #1976d2;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1976d2;
+  background: transparent;
+  outline: none;
+  padding-bottom: 0.45rem;
+}
+.content-input {
+  resize: vertical;
+  border: 1px solid #bbb;
+  border-radius: 0.6rem;
+  min-height: 14rem;
+  font-size: 1.12rem;
+  color: #424242;
+  background: #fff;
+  padding: 0.85rem 1.1rem;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(25,118,210,.03);
+}
+.editor-actions {
+  display: flex;
+  gap: 1rem;
+}
+.save-btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 0.45rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.07rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.save-btn:disabled {
+  background: #dadada;
+  color: #bdbdbd;
+  cursor: not-allowed;
+}
+.save-btn:not(:disabled):hover {
+  background: #1564b3;
+}
+.cancel-btn {
+  background: none;
+  border: 1.5px solid #424242;
+  color: #424242;
+  border-radius: 0.45rem;
+  padding: .7rem 1.25rem;
+  font-size: 1.07rem;
+  cursor: pointer;
+  transition: border 0.13s, background 0.13s;
+}
+.cancel-btn:hover {
+  background: #eeeeee;
+  border-color: #1976d2;
+}
+.note-meta {
+  margin-bottom: 1.5rem;
+}
+.note-title {
+  font-size: 2.1rem;
+  font-weight: 560;
+  color: #1976d2;
+  margin-bottom: .3rem;
+}
+.note-dates {
+  color: #757575;
+  font-size: 0.97rem;
+}
+.note-content {
+  font-size: 1.09rem;
+  color: #424242;
+  white-space: pre-line;
+  margin-top: .4rem;
+}
+.placeholder {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #bbb;
+}
+@media (max-width: 700px) {
+  .editor-container {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+  }
+}
